@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sneha\\OneDrive\\Desktop\\CoreCrud\\CoreCrud.csproj": {}
+    "C:\\Users\\sneha\\OneDrive\\Desktop\\IS7012\\CoreCrud\\CoreCrud.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sneha\\OneDrive\\Desktop\\CoreCrud\\CoreCrud.csproj": {
+    "C:\\Users\\sneha\\OneDrive\\Desktop\\IS7012\\CoreCrud\\CoreCrud.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sneha\\OneDrive\\Desktop\\CoreCrud\\CoreCrud.csproj",
+        "projectUniqueName": "C:\\Users\\sneha\\OneDrive\\Desktop\\IS7012\\CoreCrud\\CoreCrud.csproj",
         "projectName": "CoreCrud",
-        "projectPath": "C:\\Users\\sneha\\OneDrive\\Desktop\\CoreCrud\\CoreCrud.csproj",
+        "projectPath": "C:\\Users\\sneha\\OneDrive\\Desktop\\IS7012\\CoreCrud\\CoreCrud.csproj",
         "packagesPath": "C:\\Users\\sneha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sneha\\OneDrive\\Desktop\\CoreCrud\\obj\\",
+        "outputPath": "C:\\Users\\sneha\\OneDrive\\Desktop\\IS7012\\CoreCrud\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
