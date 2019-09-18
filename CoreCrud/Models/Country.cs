@@ -11,5 +11,6 @@ namespace CoreCrud.Models
         public string Name { get; set; }
         public int Population { get; set; }
         public ICollection<Athlete> Athletes { get; set; }
+
     }
 }

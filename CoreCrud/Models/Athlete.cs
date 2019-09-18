@@ -20,5 +20,17 @@ namespace CoreCrud.Models
         [Display(Name = "Country ID")]
         public int CountryId { get; set; }
         public Country Country { get; set; }
+
+        public string AthleteAgeBar
+        {
+            get
+            {
+                if (HasWonTitles == true)
+                {
+                    return "Yes";
+                }
+                return "No";
+            }
+        }
     }
 }

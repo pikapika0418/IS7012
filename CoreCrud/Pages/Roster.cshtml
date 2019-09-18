@@ -1,0 +1,33 @@
+﻿@page
+@model CoreCrud.Pages.RosterModel
+@{
+    ViewData["Title"] = "Roster";
+}
+
+<h1>Roster</h1>
+<table class="table ttable-bordered table-stripped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Rank</th>
+            <th>Percentage Won</th>
+            <th>Grand Slam?</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>
+        @Model
+        @foreach (var athlete in Model.Country1.Athletes)
+        {
+                <tr>
+                    <td>@athlete.Name</td>
+                    <td>@athlete.Rank</td>
+                    <td>@athlete.GamesWonPercentage</td>
+                    <td>@athlete.AthleteAgeBar</td>
+                    <td>@athlete.Country.Name</td>
+                </tr>
+        }
+
+    </tbody>
+</table>
+

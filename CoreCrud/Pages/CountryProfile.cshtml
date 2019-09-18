@@ -1,0 +1,38 @@
+﻿@page
+@model CoreCrud.Pages.CountryProfileModel
+@{
+    ViewData["Title"] = "AthletesInTheCountry";
+}
+
+<h1>Country Profile</h1>
+
+<table class="table ttable-bordered table-stripped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Rank</th>
+            <th>Percentage Won</th>
+            <th>Grand Slam?</th>
+        </tr>
+    </thead>
+    <tbody>
+        @Model
+        @foreach (var country in Model.Countries)
+        {
+            foreach (var athlete in Model.Athletes)
+            {
+                if (athlete.CountryId == country.Id)
+                {
+                <tr>
+                    <td>@athlete.Name</td>
+                    <td>@athlete.Rank</td>
+                    <td>@athlete.GamesWonPercentage</td>
+                    <td>@athlete.AthleteAgeBar</td>
+                </tr>
+                }
+            }
+        }
+
+    </tbody>
+</table>
+
