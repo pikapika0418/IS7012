@@ -4,13 +4,19 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
+<center>
+    <h2>ATHLETES DETAILS</h2>
+    <div>
+        <p>Check out this comprehensive list of both men's and women's professional tennis players in the world.</p>
+        <p><a asp-page="Create">Create New Entry</a></p>
+    </div>
+    <hr class="dotted"/>
+    <div>
+        <img width="1100" src="http://www.bodyinmotionbg.com/assets/uploads/banners/33.jpg" alt="TennisPlayers" />
+    </div>
+</center>
+<br />
+<table class="table" align="center">
     <thead>
         <tr>
             <th>
@@ -35,32 +41,33 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Athlete) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DOB)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HasWonTitles)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GamesWonPercentage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rank)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country.Id)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Athlete)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HasWonTitles)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GamesWonPercentage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rank)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country.Name)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

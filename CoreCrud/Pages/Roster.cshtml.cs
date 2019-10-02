@@ -23,13 +23,7 @@ namespace CoreCrud.Pages
         public string PageInformation { get; set; }
         public void OnGet()
         {
-            Country1 = _context.Country
-                .Include(cou => cou.Athletes)
-                .First(cou => cou.Id == 1);
-
-            Athletes = _context.Athlete
-                               .OrderBy(x=>x.Rank)
-                               .ToList();
+            Athletes = _context.Athlete.Include(navigationPropertyPath: col => col.Country).ToList();
 
             PageInformation = "Athletes information";
         }

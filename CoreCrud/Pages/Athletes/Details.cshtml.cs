@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using CoreCrud.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CoreCrud.Pages.Athletes
 {
@@ -24,6 +25,7 @@ namespace CoreCrud.Pages.Athletes
         {
             if (id == null)
             {
+                ViewData["CountryId"] = new SelectList(_context.Set<Country>(), "Id", "Name");
                 return NotFound();
             }
 

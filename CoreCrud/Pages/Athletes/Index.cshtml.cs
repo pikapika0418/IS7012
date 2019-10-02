@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using CoreCrud.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CoreCrud.Pages.Athletes
 {
@@ -22,6 +23,7 @@ namespace CoreCrud.Pages.Athletes
 
         public async Task OnGetAsync()
         {
+            ViewData["CountryId"] = new SelectList(_context.Set<Country>(), "Id", "Name");
             Athlete = await _context.Athlete
                 .Include(a => a.Country).ToListAsync();
         }

@@ -1,23 +1,29 @@
 ﻿@page
-@model CoreCrud.Pages.RosterModel
+@model RosterModel
 @{
     ViewData["Title"] = "Roster";
 }
-
-<h1>Roster</h1>
-<table class="table ttable-bordered table-stripped">
+    <center>
+        <h1>Roster</h1>
+        <div>
+            <img width="800" src="https://rfclipart.com/image/big/c7-16-f4/collection-of-grunge-posters-with-tennis-players-Download-Royalty-free-Vector-File-EPS-108721.jpg" alt="TennisPlayers" />
+        </div>
+    </center>
+<br />
+<hr/>
+<table class="table ttable-bordered table-striped">
     <thead>
         <tr>
             <th>Name</th>
             <th>Rank</th>
             <th>Percentage Won</th>
-            <th>Grand Slam?</th>
+            <th>Won Grand Slam</th>
             <th>Country</th>
         </tr>
     </thead>
     <tbody>
         @Model
-        @foreach (var athlete in Model.Country1.Athletes)
+        @foreach (var athlete in Model.Athletes)
         {
                 <tr>
                     <td>@athlete.Name</td>

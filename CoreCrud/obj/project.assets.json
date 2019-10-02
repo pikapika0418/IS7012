@@ -13008,28 +13008,30 @@
     ]
   },
   "packageFolders": {
-    "/Users/anjana/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\prath\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/anjana/Dotnet/IS7012/CoreCrud/CoreCrud.csproj",
+      "projectUniqueName": "C:\\Users\\prath\\OneDrive\\Documents\\Anjana\\IS7012\\CoreCrud\\CoreCrud.csproj",
       "projectName": "CoreCrud",
-      "projectPath": "/Users/anjana/Dotnet/IS7012/CoreCrud/CoreCrud.csproj",
-      "packagesPath": "/Users/anjana/.nuget/packages/",
-      "outputPath": "/Users/anjana/Dotnet/IS7012/CoreCrud/obj/",
+      "projectPath": "C:\\Users\\prath\\OneDrive\\Documents\\Anjana\\IS7012\\CoreCrud\\CoreCrud.csproj",
+      "packagesPath": "C:\\Users\\prath\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\prath\\OneDrive\\Documents\\Anjana\\IS7012\\CoreCrud\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/anjana/.config/NuGet/NuGet.Config"
+        "C:\\Users\\prath\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -13073,16 +13075,10 @@
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }

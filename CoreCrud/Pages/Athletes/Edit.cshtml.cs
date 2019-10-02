@@ -36,7 +36,7 @@ namespace CoreCrud.Pages.Athletes
             {
                 return NotFound();
             }
-           ViewData["CountryId"] = new SelectList(_context.Set<Country>(), "Id", "Id");
+           ViewData["CountryId"] = new SelectList(_context.Set<Country>(), "Id", "Name");
             return Page();
         }
 
@@ -44,6 +44,7 @@ namespace CoreCrud.Pages.Athletes
         {
             if (!ModelState.IsValid)
             {
+                ViewData["CountryId"] = new SelectList(_context.Set<Country>(), "Id", "Name");
                 return Page();
             }
 
