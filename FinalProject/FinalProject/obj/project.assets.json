@@ -8128,11 +8128,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sunny Vishwa Ramesh\\Desktop\\Anjana .NET\\IS7012\\FinalProject\\FinalProject\\FinalProject.csproj",
+      "projectUniqueName": "C:\\Users\\Sunny Vishwa Ramesh\\Documents\\GitHub\\IS7012\\FinalProject\\FinalProject\\FinalProject.csproj",
       "projectName": "FinalProject",
-      "projectPath": "C:\\Users\\Sunny Vishwa Ramesh\\Desktop\\Anjana .NET\\IS7012\\FinalProject\\FinalProject\\FinalProject.csproj",
+      "projectPath": "C:\\Users\\Sunny Vishwa Ramesh\\Documents\\GitHub\\IS7012\\FinalProject\\FinalProject\\FinalProject.csproj",
       "packagesPath": "C:\\Users\\Sunny Vishwa Ramesh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sunny Vishwa Ramesh\\Desktop\\Anjana .NET\\IS7012\\FinalProject\\FinalProject\\obj\\",
+      "outputPath": "C:\\Users\\Sunny Vishwa Ramesh\\Documents\\GitHub\\IS7012\\FinalProject\\FinalProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
