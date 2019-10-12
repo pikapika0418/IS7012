@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\prath\\OneDrive\\Documents\\Anjana\\IS7012\\CoreCrud\\CoreCrud.csproj": {}
+    "C:\\Users\\Sunny Vishwa Ramesh\\Desktop\\Anjana .NET\\IS7012\\CoreCrud\\CoreCrud.csproj": {}
   },
   "projects": {
-    "C:\\Users\\prath\\OneDrive\\Documents\\Anjana\\IS7012\\CoreCrud\\CoreCrud.csproj": {
+    "C:\\Users\\Sunny Vishwa Ramesh\\Desktop\\Anjana .NET\\IS7012\\CoreCrud\\CoreCrud.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\prath\\OneDrive\\Documents\\Anjana\\IS7012\\CoreCrud\\CoreCrud.csproj",
+        "projectUniqueName": "C:\\Users\\Sunny Vishwa Ramesh\\Desktop\\Anjana .NET\\IS7012\\CoreCrud\\CoreCrud.csproj",
         "projectName": "CoreCrud",
-        "projectPath": "C:\\Users\\prath\\OneDrive\\Documents\\Anjana\\IS7012\\CoreCrud\\CoreCrud.csproj",
-        "packagesPath": "C:\\Users\\prath\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\prath\\OneDrive\\Documents\\Anjana\\IS7012\\CoreCrud\\obj\\",
+        "projectPath": "C:\\Users\\Sunny Vishwa Ramesh\\Desktop\\Anjana .NET\\IS7012\\CoreCrud\\CoreCrud.csproj",
+        "packagesPath": "C:\\Users\\Sunny Vishwa Ramesh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sunny Vishwa Ramesh\\Desktop\\Anjana .NET\\IS7012\\CoreCrud\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\prath\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sunny Vishwa Ramesh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -68,10 +68,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

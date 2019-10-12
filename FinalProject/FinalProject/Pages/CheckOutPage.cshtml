@@ -1,0 +1,28 @@
+﻿@page
+@model FinalProject.Pages.CheckOutPageModel
+@{
+    ViewData["Title"] = "CheckOutPage";
+}
+
+<h1>CheckOutPage</h1>
+
+<form action="" method="post">
+    <table>
+        @if (Model.UserBook != null && Model.Book != null)
+        {
+            <tr padding="20px">
+                <td>Book:           @Model.Book.Name</td>
+            </tr>
+            <tr>
+                <td>Check-Out Date: @Model.UserBook.CheckoutDate</td>
+            </tr>
+            <tr>
+                <td>Due Date:       @Model.UserBook.CheckoutDate</td>
+            </tr>
+            <tr>
+                <td><a asp-page="./UserBookProfile" asp-route-id="@Model.Book.Name">Check Out</a></td>
+            </tr>
+         }
+    </table>
+</form>
+

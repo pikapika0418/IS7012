@@ -1,0 +1,275 @@
+﻿@page
+@model FinalProject.Pages.SearchBooksModel
+@{
+    ViewData["Title"] = "SearchByBookResults";
+}
+
+<script>
+    function showBook() {
+        document.getElementById('searchByBookName').style.display = "";
+    }
+    function showAuthor() {
+        document.getElementById('searchByAuthor').style.display = "";
+    }
+    function showGenre() {
+        document.getElementById('searchByGenre').style.display = "";
+    }
+
+</script>
+
+<table>
+    <tbody>
+        <tr>
+            <td><input type="button" name="answer" value="Search Book" onclick="showBook()" /></td>
+            <td><input type="button" name="answer" value="Search Author" onclick="showAuthor()" /></td>
+            <td><input type="button" name="answer" value="Search Genre  " onclick="showGenre()" /></td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="searchByBookName" style="display:none;">
+    <h1>SearchBooks</h1>
+    
+        <form id="SearchBookName" action="" method="POST" style="margin-top: 50px;">
+            <table width="50%">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label class="control-label" for="search">Book Name</label>
+                                <input type="text" class="form-control" name="SearchBook" id="searchBook" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Search Books" class="btn btn-default" />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    
+</div>
+
+<div id="searchByAuthor" style="display:none;">
+    <h1>Search Author</h1>
+   
+        <form id="SearchAuthor" action="" method="POST" style="margin-top: 50px;">
+            <table width="50%">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label class="control-label" for="search">Author</label>
+                                <input type="text" class="form-control" name="SearchAuthor" id="searchAuthor" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Search Author" class="btn btn-default" />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    
+</div>
+
+<div id="searchByGenre" style="display:none;">
+    <h1>Search Genre</h1>
+   
+        <form id="SearchBookName" action="" method="POST" style="margin-top: 50px;">
+            <table width="50%">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label class="control-label" for="search">Genre</label>
+                                <input type="text" class="form-control" name="SearchGenre" id="searchGenre" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Search Genre" class="btn btn-default" />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    
+</div>
+
+<form action="/CheckOutPage" method="GET">
+    <div width="50%">
+        @if (!string.IsNullOrWhiteSpace(Model.SearchBook) && Model.SearchCompleted)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Author</th>
+                        <th>Availability</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.SearchByBookResults.Count > 0)
+                    {
+                        @foreach (var book in Model.SearchByBookResults)
+                        {
+                            <tr>
+                                <td>@book.Name</td>
+                                <td>@book.Author</td>
+                                @if (book.NumberOfBooksAvailable > 0)
+                                {
+                                    <td style="background-color:green; width:inherit">Available</td>
+                                    <td>
+                                        <a  asp-page="./CheckOutPage" asp-route-id="@book.Id">
+                                            Check out
+                                        </a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td style="background-color:red; width:inherit">Unavailable</td>
+                                    <td></td>
+
+                                }
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr class="danger">
+                            <td colspan="4" class="text-center">
+                                No results found for term "@Model.SearchBook"
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info" hidden>
+                <p>
+                    Enter the search terms into the box and click <strong>Search Books</strong>
+                </p>
+            </div>
+        }
+    </div>
+    <div width="50%">
+        @if (!string.IsNullOrWhiteSpace(Model.SearchAuthor) && Model.SearchCompleted)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Availability</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.SearchByAuthorResults.Count > 0)
+                    {
+                        @foreach (var book in Model.SearchByAuthorResults)
+                        {
+                            <tr>
+                                <td>@book.Name</td>
+                                @if (book.NumberOfBooksAvailable > 0)
+                                {
+                                    <td style="background-color:green; width:inherit">Available</td>
+                                    <td>
+                                        <a asp-page="./CheckOutPage" asp-route-id="@book.Id">
+                                            Check out
+                                        </a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td style="background-color:red; width:inherit">Unavailable</td>
+                                    <td></td>
+
+                                }
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr class="danger">
+                            <td colspan="4" class="text-center">
+                                No results found for term "@Model.SearchAuthor"
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info" hidden>
+                <p>
+                    Enter the search terms into the box and click <strong>Search Author</strong>
+                </p>
+            </div>
+        }
+    </div>
+    <div width="50%">
+        @if (!string.IsNullOrWhiteSpace(Model.SearchGenre) && Model.SearchCompleted)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Author</th>
+                        <th>Availability</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.SearchByGenreResults.Count > 0)
+                    {
+                        @foreach (var book in Model.SearchByGenreResults)
+                        {
+                            <tr>
+                                <td>@book.Name</td>
+                                <td>@book.Author</td>
+                                @if (book.NumberOfBooksAvailable > 0)
+                                {
+                                    <td style="background-color:green; width:inherit">Available</td>
+                                    <td>
+                                        <a asp-page="./CheckOutPage" asp-route-id="@book.Id">
+                                            Check out
+                                        </a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td style="background-color:red; width:inherit">Unavailable</td>
+                                    <td></td>
+
+                                }
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr class="danger">
+                            <td colspan="4" class="text-center">
+                                No results found for term "@Model.SearchGenre"
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info" hidden>
+                <p>
+                    Enter the search terms into the box and click <strong>Search Genre</strong>
+                </p>
+            </div>
+        }
+    </div>
+</form>

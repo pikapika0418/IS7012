@@ -1,0 +1,88 @@
+﻿@page
+@model FinalProject.Pages.UserBookProfileModel
+@{
+    ViewData["Title"] = "UserBookProfile";
+}
+
+<h1>User Profile</h1>
+
+<script>
+    function hideUserSearch() {
+        document.getElementById('searchUser').style.display = "none";
+    }
+
+</script>
+<form id="SearchUser" action="" method="POST" style="margin-top: 50px;display:block;">
+    <table width="50%">
+        <tbody>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label class="control-label" for="search">User Name</label>
+                        <input type="text" class="form-control" name="SearchUser" id="searchUser" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Search User" class="btn btn-default"/>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+<form action="" method="GET" style="margin-top: 50px;">
+    <div style=hideUserSearch()>
+        @if (!string.IsNullOrWhiteSpace(Model.SearchUser))
+        {
+            @if (Model.UserProfileName != null)
+            {
+                <h4>Hi @Model.UserProfileName.Name</h4>
+            }
+        }
+        @if (Model.UserBooks != null && Model.UserBooks.Count > 0)
+        {
+            <table>
+                <thead>
+                    <tr style="padding:10px;">
+                        <th>Book</th>
+                        <th>Check-Out Date</th>
+                        <th>Check-In Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.UserBooks != null)
+                    {
+                        @foreach (var userbooks in Model.UserBooks)
+                        {
+                            <tr>
+                                <td>@userbooks.BookId</td>
+                                <td>@userbooks.CheckoutDate</td>
+                                @if (!userbooks.CheckInDate.Equals(null))
+                                {
+                                    <td>@userbooks.CheckInDate</td>
+                                    <td></td>
+                                }
+                                else
+                                {
+                                    <td>To be Returned</td>
+                                    <td><button action="submit" id="submit" type="submit">Check In</button></td>
+                                }
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <p>No entries available</p>
+                    }
+                </tbody>
+            </table>
+
+        }
+        else
+        {
+            <p>No entries available</p>
+        }
+    </div>
+</form>
+
+

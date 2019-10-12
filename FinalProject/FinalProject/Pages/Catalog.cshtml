@@ -1,0 +1,37 @@
+﻿@page
+@model FinalProject.Pages.CatalogModel
+@{
+    ViewData["Title"] = "Catalog";
+}
+
+<center><h1>CATALOG</h1></center>
+
+<p>
+    Find what book you want using this catalog. It lists all titles present in the library that are available for checkout.
+    Knock yourselves out with this !!
+</p>
+<div style="background-size:cover">
+    <center><img width="1200" height="600" src="https://aicolympic.org/wp-content/uploads/library-shelves.jpg" alt="Auction" /></center>
+</div>
+<br />
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var auc in Model.Books)
+        {
+            <tr>
+                <td>@auc.Name</td>
+                <td>@auc.Author</td>
+                <td>@auc.Genre.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
