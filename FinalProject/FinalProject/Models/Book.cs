@@ -1,10 +1,6 @@
 ﻿using System;
-
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-
-using System.Threading.Tasks;
 
 namespace FinalProject.Models
 {
@@ -14,7 +10,6 @@ namespace FinalProject.Models
 
         [Required(ErrorMessage = "Name is compulsory")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "Minimum 2-100 characters")]
-        //[CustomValidation(typeof(Book), "NameValidation")]
         [Display(Name = "Book")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Author name is mandatory")]
@@ -25,6 +20,7 @@ namespace FinalProject.Models
         public Genre Genre { get; set; }
         [Required(ErrorMessage = "This field is mandatory")]
         [Display(Name = "Number of Books Available")]
+        [CustomValidation(typeof(Book), "Fornocopies")]
         public int NumberOfBooksAvailable { get; set; }
         public ICollection<UserBook> Userbooks { get; set; }
         public string Replenish
@@ -49,6 +45,15 @@ namespace FinalProject.Models
                 // OTHERWISE RETURN NO BOOK AVAILABLE 
                 return "No Book Available";
             }
+        }
+
+        public static ValidationResult Fornocopies(int NumberOfBooksAvailable, ValidationContext context)
+        {
+            if (NumberOfBooksAvailable >= 0)
+            {
+                return ValidationResult.Success;
+            }
+            return new ValidationResult("Must not be in less than zero");
         }
     }
 }

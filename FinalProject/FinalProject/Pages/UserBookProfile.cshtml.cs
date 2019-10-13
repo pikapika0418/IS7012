@@ -15,7 +15,7 @@ namespace FinalProject.Pages
         public User UserProfileName { get; set; }
         [BindProperty]
         public string SearchUser { get; set; }
-        public bool UserFound { get; set; }
+        public Book Book1 { get; set; }
         public DateTime DueDate { get; set; }
         public UserBookProfileModel(FinalProjectContext context)
         {
@@ -30,8 +30,8 @@ namespace FinalProject.Pages
                 UserBooks = _context.UserBook
                     .Where(x => x.UserId.Equals(UserProfileName.ID))
                                     .OrderBy(x => x.CheckInDate).ToList();
-
-       
+                
+                
             }
             else
             {

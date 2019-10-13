@@ -310,3 +310,5 @@ C:\Users\Sunny Vishwa Ramesh\Documents\GitHub\IS7012\FinalProject\FinalProject\o
 C:\Users\Sunny Vishwa Ramesh\Documents\GitHub\IS7012\FinalProject\FinalProject\obj\Debug\netcoreapp3.0\FinalProject.csproj.CopyComplete
 C:\Users\Sunny Vishwa Ramesh\Documents\GitHub\IS7012\FinalProject\FinalProject\obj\Debug\netcoreapp3.0\FinalProject.dll
 C:\Users\Sunny Vishwa Ramesh\Documents\GitHub\IS7012\FinalProject\FinalProject\obj\Debug\netcoreapp3.0\FinalProject.pdb
+C:\Users\Sunny Vishwa Ramesh\Documents\GitHub\IS7012\FinalProject\FinalProject\obj\Debug\netcoreapp3.0\Razor\Pages\Checkout.cshtml.g.cs
+C:\Users\Sunny Vishwa Ramesh\Documents\GitHub\IS7012\FinalProject\FinalProject\obj\Debug\netcoreapp3.0\Razor\Pages\CheckIn.cshtml.g.cs

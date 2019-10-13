@@ -1,0 +1,30 @@
+﻿@page
+@model FinalProject.Pages.CheckInModel
+@{
+    ViewData["Title"] = "CheckIn";
+}
+
+<h1>Check In Book</h1>
+
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form method="post" style="margin-top: 50px;">
+
+            @if (Model.Book != null)
+            {
+
+                <input type="hidden" asp-for="CheckoutForm.BookName" />
+                <div class="form-group">
+                    <label asp-for="CheckoutForm.BookName" class="control-label"></label>
+                    <input asp-for="CheckoutForm.BookName" class="form-control" />
+                    <span asp-validation-for="CheckoutForm.BookName" class="text-danger"></span>
+                </div>
+                <a asp-page="./Book/Index" asp-route-id="@Model.Book.Id">
+                    Check in Book
+                </a>
+            }
+            
+        </form>
+    </div>
+</div>

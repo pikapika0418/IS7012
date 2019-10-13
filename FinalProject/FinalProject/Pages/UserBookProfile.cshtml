@@ -10,10 +10,10 @@
     function hideUserSearch() {
         document.getElementById('searchUser').style.display = "none";
     }
-
 </script>
+
 <form id="SearchUser" action="" method="POST" style="margin-top: 50px;display:block;">
-    <table width="50%">
+    <table>
         <tbody>
             <tr>
                 <td>
@@ -29,6 +29,7 @@
         </tbody>
     </table>
 </form>
+
 <form action="" method="GET" style="margin-top: 50px;">
     <div style=hideUserSearch()>
         @if (!string.IsNullOrWhiteSpace(Model.SearchUser))
@@ -65,7 +66,11 @@
                                 else
                                 {
                                     <td>To be Returned</td>
-                                    <td><button action="submit" id="submit" type="submit">Check In</button></td>
+                                    <td>
+                                        <a asp-page="./CheckIn" asp-route-id="@userbooks.BookId">
+                                            Check In
+                                        </a>
+                                    </td>
                                 }
                             </tr>
                         }

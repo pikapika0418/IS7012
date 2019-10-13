@@ -12,7 +12,7 @@ namespace FinalProject.Models
 
         [Required(ErrorMessage = "Name is compulsory")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "Minimum 2-100 characters")]
-        //[CustomValidation(typeof(User), "NameValidation")]
+        [CustomValidation(typeof(User), "NameValidation")]
         [Display(Name = "User Name")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Age is compulsory")]
@@ -20,8 +20,7 @@ namespace FinalProject.Models
         public bool Membership { get; set; }
 
         public ICollection<UserBook> UserBooks { get; set; }
-        /*
-         public static ValidationResult NameValidation(string name, ValidationContext context)
+        public static ValidationResult NameValidation(string name, ValidationContext context)
         {
             User user = new User();
             if (string.IsNullOrWhiteSpace(name))
@@ -33,7 +32,7 @@ namespace FinalProject.Models
             {
                 return ValidationResult.Success;
             }
-            var dbContext = context.GetService(typeof(Project_dhwaniContext)) as Project_dhwaniContext;
+            var dbContext = context.GetService(typeof(FinalProjectContext)) as FinalProjectContext;
             int duplicateCount = dbContext.User
             .Count(x => x.ID != instance.ID && x.Name == name);
             if (duplicateCount > 0)
@@ -42,6 +41,5 @@ namespace FinalProject.Models
             }
             return ValidationResult.Success;
         }
-         */
     }
 }

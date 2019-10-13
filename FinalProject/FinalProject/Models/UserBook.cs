@@ -24,7 +24,19 @@ namespace FinalProject.Models
         public DateTime? CheckoutDate { get; set; }
         [DataType(DataType.Date)]
         [Display(Name = "Due Date")]
+        [CustomValidation(typeof(UserBook), "ForCheckindate")]
         public DateTime? CheckInDate { get; set; }
-
+        public static ValidationResult ForCheckindate(DateTime? CheckInDate, ValidationContext context)
+        {
+            if (CheckInDate == null)
+            {
+                return ValidationResult.Success;
+            }
+            if (CheckInDate >= DateTime.Today)
+            {
+                return ValidationResult.Success;
+            }
+            return new ValidationResult("Please enter a valid date - The date should not be in the past");
+        }
     }
 }

@@ -10,7 +10,8 @@ namespace FinalProject.Pages
     {
         private FinalProjectContext _context;
         public ICollection<UserBook> Userbook;
-
+        public ICollection<Book> Books;
+        public int Rating = 5;
         public RatingsModel(FinalProjectContext context)
         {
             _context = context;
@@ -18,9 +19,10 @@ namespace FinalProject.Pages
         public void OnGet()
         {
             Userbook = _context.UserBook
-                            .OrderBy(x => x.Rating)
+                            .OrderByDescending(x => x.Rating)
                             .ToList();
 
+            
         }
     }
 }

@@ -24,16 +24,33 @@ namespace FinalProject.Pages
         [BindProperty]
         public Book Book { get; set; }
         
-        public void OnGet(int id)
+        public void OnGet()
+        {
+            
+        }
+        public IActionResult OnPost(int id)
         {
             UserBook = _context.UserBook
                                .Where(y => y.BookId.Equals(id)).FirstOrDefault();
             Book = _context.Book
                            .Where(x => x.Id.Equals(id)).FirstOrDefault();
-        }
-        public void OnPost()
-        {
-            var userbook = new UserBook(); 
+
+            var userbook = new UserBook();
+            userbook.BookId = UserBook.BookId;
+            userbook.Book = UserBook.Book;
+            userbook.CheckInDate = UserBook.CheckInDate;
+            userbook.CheckoutDate = UserBook.CheckoutDate;
+            userbook.FeeAmount = UserBook.FeeAmount;
+            userbook.User = UserBook.User;
+            userbook.UserId = UserBook.UserId;
+            userbook.Rating = UserBook.Rating;
+
+            var book = new Book();
+            book = _context.Book.Find(userbook.BookId);
+            book.NumberOfBooksAvailable -= 1;
+      
+            _context.SaveChanges();
+            return RedirectToPage("/UserBookProfile");
         }
     }
 }

@@ -11,20 +11,26 @@
     Browse and Enjoy!!
 </h2>
 
-
-
 @foreach (var usr in Model.Userbook)
 {
-    <div class="card">
-
-        <div class="Card-header">
-            @usr.Rating
-
-        </div>
-        <div class="card-body">
-            <p>Book Name: @usr.Book</p>
-            <p>Book Author:@usr.Book</p>
-        </div>
+    if(Model.Rating>0)
+    { 
+<div class="card">
+    <div class="Card-header">
+        Card with Rating @Model.Rating
     </div>
+    @if (usr.Rating == Model.Rating)
+    {
+        <div class="card-body">
+            <p>Book Name: @usr.BookId</p>
+        </div>
+    }
+    else
+    {
+        Model.Rating = Model.Rating - 1;
+    }
+</div>
+        }
+    
     <br />
 }

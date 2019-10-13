@@ -5,7 +5,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Details of the User profile</h1>
 
 <div>
     <h4>UserBook</h4>
@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.UserBook.Book)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UserBook.Book.Author)
+            @Html.DisplayFor(model => model.UserBook.Book.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.UserBook.User)

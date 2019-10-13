@@ -20,7 +20,7 @@ namespace FinalProject.Pages.UserBooks
 
         public IActionResult OnGet()
         {
-        ViewData["BookId"] = new SelectList(_context.Book, "Id", "Author");
+        ViewData["BookId"] = new SelectList(_context.Book, "Id", "Name");
         ViewData["UserId"] = new SelectList(_context.User, "ID", "Name");
             return Page();
         }
