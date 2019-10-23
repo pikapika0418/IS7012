@@ -3,13 +3,82 @@
 @{
     ViewData["Title"] = "Home page";
 }
+@{
+    var sum = 0;
+    String countree= "USA";
+    var youngest = 60;
+    String youngestAthlete = "ABC";
+    String youngestCountry = "ABC";
+    var GrandSlamCount = 0;
+    var BestAthlete = ""; 
+    var BestCountry = "";
+}
+    <div class="text-center">
+        <h1 class="display-4">Welcome to the World of Tennis</h1>
+        <p>Core Crud Association</p>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to the World of Tennis</h1>
-    <p>Core Crud Association</p>
+        <center><img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Ausopen_margaret_court_arena_medium.jpg" alt="WorldTennis" /></center>
 
-    <center><img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Ausopen_margaret_court_arena_medium.jpg" alt="WorldTennis"/></center>
+        <p>To know more about athletes from a country:<a class="nav-link text-dark" asp-area="" asp-page="/CountryProfile?id=1">CLICK HERE!!!</a></p>
+        
+        <table class="table ttable-bordered table-stripped">
+            <thead>
+                <tr>
+                    <td cellpadding="2">
+                        sfsdjfsd
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Country with highest number of players</td>
+                    @foreach (var Cou in Model.Countries)
+                    {
+                        var athleteCount = Cou.Athletes.Count;
+                        if (athleteCount > sum)
+                        {
+                            countree = Cou.Name;
+                            sum = athleteCount;
+                        }
+                    }
+                    <td>@countree</td>
+                </tr>
+                <tr>
+                    <td>Youngest player</td>
+                    @foreach(var Ath in Model.Athletes)
+                    {
+                        var athleteDOBYear = Ath.DOB.Year;
+                        DateTime currentYear = DateTime.Today;
+                        var youngestAge = currentYear.Year - athleteDOBYear;
 
-    <p>To know more about athletes from a country:<a class="nav-link text-dark" asp-area="" asp-page="/CountryProfile?id=1">CLICK HERE!!!</a></p>
+                        if (youngestAge < youngest)
+                        {
+                            youngestAthlete = Ath.Name;
+                            youngest = youngestAge;
+                            youngestCountry = Ath.Country.Name;
+                        }
 
-</div>
+                        if(Ath.HasWonTitles == true)
+                        {
+                            GrandSlamCount++;
+                        }
+                        if(Ath.Rank == 1)
+                        {
+                            BestAthlete = Ath.Name;
+                            BestCountry = Ath.Country.Name;
+                        }
+                    }
+                    <td>@youngestAthlete , @youngestCountry</td>
+                </tr>
+                <tr>
+                    
+                    <td>Number of GrandSlams Won</td>
+                    <td>@GrandSlamCount</td>
+                </tr>
+                <tr>
+                    <td>World No 1 Player</td>
+                    <td>@BestAthlete , @BestCountry</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
