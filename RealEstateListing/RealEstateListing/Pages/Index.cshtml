@@ -1,0 +1,196 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Buy a home</h1>
+
+<table cellpadding="10" cellspacing="2" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Type of home</th>
+            <th>Square feet</th>
+            <th>Cost</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="houselist">
+    </tbody>
+</table>
+<div>
+    <hr />
+    <form id="createHouseForm" class="form">
+        <h4>Add a new House</h4>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" placeholder="Type of Home" />
+        </div>
+        <div class="form-group">
+            <label for="sqft">Square feet</label>
+            <input type="text" class="form-control" id="sqft" placeholder="Square Feet" />
+        </div>
+        <div class="form-group">
+            <label for="cost">Cost</label>
+            <input type="text" class="form-control" id="cost" placeholder="Cost" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+@section Scripts {
+
+    <script>
+        $(function () {
+            loadData();
+            $("#createHouseForm").submit(function () {
+                createHouse();
+                return false;
+            });
+        });
+
+        function loadData() {
+            console.log("Inside Load data function");
+            $.ajax({
+                url: "/api/RealEstates",
+                dataType: 'json',
+                contentType: 'application/json',
+                method: 'GET'
+            }).done(function (responseJSON, status, xhr) {
+                buildHouseList(responseJSON);
+            }).fail(function (xhr, status, error) {
+                alert("There was an error retrieving the data");
+            });
+        }
+
+        function buildHouseList(houses) {
+            $("#houselist").empty();
+            $.each(houses, function (index, item) {
+                var td = $('<td house-id="' + item.id + '"></td>');
+                
+                $("#houselist").append('<tr>');
+                $("#houselist").append('<td>' + item.type + ' </td> ' +
+                    '<td>' + item.sqft + ' </td> ' +
+                    '<td>' + item.cost + ' </td>');
+                $(td).append(' <a href="#" class="pull-right house-delete">Delete</a>');
+                $(td).append('<span class="pull-right">&nbsp;|&nbsp;</span>');
+              
+                var buyForm = $('<div style="display: none;" class="row buy-form"></div>');
+                var buyInput = $('<div class="col-sm-8"><input type="text" class="form-control buy-name" placeholder="Who bought this home?" /></div>');
+                var buybutton = $('<div class="col-sm-4"><button class="btn btn-primary buy-save">Buy</button> <button class="btn btn-default buy-cancel">Cancel</button></div>');
+                console.log("Value of Bool : " + item.isHouseSold);
+                $(buyForm).append(buyInput);
+                $(buyForm).append(buybutton);
+                if (!item.isHouseSold) {
+                    $(td).append('<a href="#" class="pull-right house-buy">Buy</a>');
+                    $(td).append(buyForm);
+                }
+                else {
+                    $(td).append('<div class="badge badge-danger sold-span">Sold!</div>');
+                }
+
+                $("#houselist").append(td);
+                $("#houselist").append('</tr>');
+            });
+        }
+
+
+        function deleteHouse(id) {
+            console.log("House id =" + id);
+            $.ajax({
+                url: '/api/RealEstates/' + id,
+                dataType: 'json',
+                contentType: 'application/json',
+                method: 'DELETE',
+            }).done(function (responseData, status, xhr) {
+                loadData();
+            }).fail(function (xhr, status, error) {
+                alert("There was an error deleting your house");
+            });
+        }
+
+
+        $("#houselist").on('click', 'a.house-delete', function () {
+            //$(this) is the element (<a>) being clicked
+            // traverse to the parent li element and get
+            // the custom attribute value which is the ID
+            var id = $(this).parents("td").attr('house-id');
+            // call the delete method
+            if (confirm("Are you sure you want to delete this house")) {
+                deleteHouse(id);
+            }
+            return false;
+        });
+
+
+        function createHouse() {
+            var requestData = {
+                type: $("#type").val(),
+                sqft: parseInt($("#sqft").val()),
+                cost: parseInt($("#cost").val())
+            };
+            console.log("Request Data: " + JSON.stringify(requestData));
+            $.ajax({
+                url: '/api/realEstates',
+                dataType: 'json',
+                contentType: 'application/json',
+                method: 'POST',
+                data: JSON.stringify(requestData)
+            }).done(function (responseData, status, xhr) {
+                loadData();
+                $("#type").val("");
+                $("#sqft").val("");
+                $("#cost").val("");
+            }).fail(function (xhr, status, error) {
+                alert("There was an error saving your house");
+            });
+        }
+
+        function buyHouse(id, name, callback) {
+            var requestData = {
+                name: name
+            };
+            $.ajax({
+                url: '/api/RealEstates/buy/' + id,
+                dataType: 'json',
+                contentType: 'application/json',
+                method: 'PUT',
+                data: JSON.stringify(requestData)
+            }).done(function (responseData, status, xhr) {
+                loadData();
+                if (callback) {
+                    callback();
+                }
+            }).fail(function (xhr, status, error) {
+                alert("There was an error saving your house");
+            });
+        }
+
+
+        $("#houselist").on('click', 'a.house-buy', function () {
+            $(this).parents("td").find('.buy-form').show();
+            return false;
+        });
+
+
+        $("#houselist").on('click', 'button.buy-cancel', function () {
+            $(this).parents("td").find('.buy-form').hide();
+            return false;
+        });
+
+
+        $("#houselist").on('click', 'button.buy-save', function () {
+            var id = $(this).parents("td").attr('house-id');
+            var name = $(this).parents("li").find('.buy-form .buy-name').val();
+            buyHouse(id, name, function () {
+                $(this).parents("td").find('.buy-form').hide();
+                $(this).parents("td").find('.house-buy').hide();
+                $(this).parents("td").find('.sold-span').show();
+            });
+            return false;
+        });
+
+    </script>
+
+}
